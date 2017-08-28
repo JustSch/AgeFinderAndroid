@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AgeFinder</string>
+    <string name="yyyy">YYYY</string>
+    <string name="_0_years_old">0 Years Old</string>
+    <string name="dd">DD</string>
+    <string name="enter_the_date_you_were_born">Enter The Date You Were Born:</string>
+    <string name="mm">MM</string>
+    <string name="your_age_is">Your Age Is:</string>
+    <string name="calculate">Calculate</string>
+</resources>
