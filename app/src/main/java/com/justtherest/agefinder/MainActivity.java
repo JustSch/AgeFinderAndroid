@@ -1,6 +1,6 @@
 package com.justtherest.agefinder;
 
-//import android.icu.util.Calendar;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +11,13 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ * Created by Justin 2017
+ */
+
+/*
+TODO: Add Validity Check!!!
+ */
 public class MainActivity extends AppCompatActivity {
 
     private Button cButton;
@@ -18,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     private EditText dNum;
     private EditText yNum;
     private TextView yearOld;
+    private int uMonth;
+    private int uDay;
+    private int uYear;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +45,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int age;
-                int userMonth = Integer.parseInt(mNum.getText().toString());
-                int userDay = Integer.parseInt((dNum.getText().toString()));
-                int userYear = Integer.parseInt(yNum.getText().toString());
+
+                setUMonth();
+
+                setUDay();
+
+                setUYear();
 
                 Calendar cal = Calendar.getInstance();
 
@@ -49,16 +63,9 @@ public class MainActivity extends AppCompatActivity {
                 SimpleDateFormat year = new SimpleDateFormat("YYYY");
                 final int sysYear = Integer.parseInt(year.format(cal.getTime()));
 
-                age = findAge(userMonth, userDay, userYear, sysMonth,sysDay,sysYear);
+                age = findAge(sysMonth,sysDay,sysYear);
 
                 yearOld.setText(String.valueOf(age) + " Years Old");
-
-
-
-
-
-
-
 
 
 
@@ -67,36 +74,48 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
     }
-    int findAge(int uMonth, int uDay, int uYear,
-                int sMonth, int sDay, int sYear){
-        int age = sYear - uYear;
-        if (monthGreater(sMonth, uMonth)) return age - 1;
-        if (dayGreater(sDay, uDay)) return age - 1;
-
-
-
+    public int findAge(int sMonth, int sDay, int sYear){
+        int age = sYear - getUYear();
+        if (monthGreater(sMonth)) return age - 1;
+        if (dayGreater(sDay)) return age - 1;
 
         return age;
     }
 
-    Boolean monthGreater (int sMonth, int uMonth){
-        if (sMonth >= uMonth) return false;
+    Boolean monthGreater (int sMonth){
+        if (sMonth >= getUMonth()) return false;
         return  true;
 
     }
 
-    Boolean dayGreater (int sDay, int uDay) {
-        if (sDay >= uDay) return false;
+    Boolean dayGreater (int sDay) {
+        if (sDay >= getUDay()) return false;
         return true;
 
+    }
+
+    public void setUMonth() {
+        uMonth = Integer.parseInt(mNum.getText().toString());
+    }
+
+    public void setUDay() {
+        uDay = Integer.parseInt(dNum.getText().toString());
+    }
+
+    public void setUYear() {
+        uYear = Integer.parseInt(yNum.getText().toString());
+    }
+
+    public int getUMonth() {
+        return uMonth;
+    }
+
+    public int getUDay() {
+        return uDay;
+    }
+
+    public int getUYear() {
+        return uYear;
     }
 }
