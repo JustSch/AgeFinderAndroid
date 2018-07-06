@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat day = new SimpleDateFormat("dd");
         final int sysDay = Integer.parseInt(day.format(cal.getTime()));
 
-        SimpleDateFormat year = new SimpleDateFormat("YYYY");
+        SimpleDateFormat year = new SimpleDateFormat("yyyy");
         final int sysYear = Integer.parseInt(year.format(cal.getTime()));
 
         age = findAge(sysMonth,sysDay,sysYear);
