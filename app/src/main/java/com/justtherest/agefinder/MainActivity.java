@@ -19,7 +19,7 @@ import java.util.Calendar;
  */
 
 /*
-TODO: Add Validity Check and AutoProgress to Next Box (Maybe)!!!!
+TODO: Add Validity Check, Make Better UI That Scales Well and AutoProgress to Next Box (Maybe)!!!!
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -158,6 +158,8 @@ public class MainActivity extends AppCompatActivity {
         age = findAge(sysMonth,sysDay,sysYear);
 
         yearOld.setText(String.valueOf(age) + " Years Old");
+
+        Toast.makeText(this,"Done",Toast.LENGTH_SHORT).show();
     }
 
     public void checkBoxes() {
