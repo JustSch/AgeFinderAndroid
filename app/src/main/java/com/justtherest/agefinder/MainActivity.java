@@ -9,6 +9,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -18,7 +19,7 @@ import java.util.Calendar;
  */
 
 /*
-TODO: Add Validity Check, Check That All Boxes Filled and AutoProgress to Next Box!!!!
+TODO: Add Validity Check and AutoProgress to Next Box (Maybe)!!!!
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -46,19 +47,17 @@ public class MainActivity extends AppCompatActivity {
         cButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calculateAge();
+                checkBoxes();
 
             }
         });
 
-        /*
-        TODO: Make Sure All Boxes Filled Before Using a Listener!!!!
-         */
+
         mNum.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE){
-                    calculateAge();
+                    checkBoxes();
                     return true;
                 }
                 return false;
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE){
-                    calculateAge();
+                    checkBoxes();
                     return true;
                 }
                 return false;
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE){
-                    calculateAge();
+                    checkBoxes();
                     return true;
                 }
                 return false;
@@ -159,5 +158,15 @@ public class MainActivity extends AppCompatActivity {
         age = findAge(sysMonth,sysDay,sysYear);
 
         yearOld.setText(String.valueOf(age) + " Years Old");
+    }
+
+    public void checkBoxes() {
+
+        if (mNum.getText().toString().trim().length() == 0 ||
+                dNum.getText().toString().trim().length() == 0 ||
+                yNum.getText().toString().trim().length() == 0) {
+            Toast.makeText(this, "Please Fill All Boxes",Toast.LENGTH_SHORT).show();
+        }
+        else calculateAge();
     }
 }
