@@ -3,7 +3,9 @@ package com.justtherest.agefinder;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,7 +18,7 @@ import java.util.Calendar;
  */
 
 /*
-TODO: Add Validity Check!!!
+TODO: Add Validity Check, Check That All Boxes Filled and AutoProgress to Next Box!!!!
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -44,41 +46,56 @@ public class MainActivity extends AppCompatActivity {
         cButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int age;
-
-                setUMonth();
-
-                setUDay();
-
-                setUYear();
-
-                Calendar cal = Calendar.getInstance();
-
-                SimpleDateFormat month = new SimpleDateFormat("MM");
-                final int sysMonth = Integer.parseInt(month.format(cal.getTime()));
-
-                SimpleDateFormat day = new SimpleDateFormat("DD");
-                final int sysDay = Integer.parseInt(day.format(cal.getTime()));
-
-                SimpleDateFormat year = new SimpleDateFormat("YYYY");
-                final int sysYear = Integer.parseInt(year.format(cal.getTime()));
-
-                age = findAge(sysMonth,sysDay,sysYear);
-
-                yearOld.setText(String.valueOf(age) + " Years Old");
-
-
+                calculateAge();
 
             }
         });
 
+        /*
+        TODO: Make Sure All Boxes Filled Before Using a Listener!!!!
+         */
+        mNum.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE){
+                    calculateAge();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        dNum.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE){
+                    calculateAge();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        yNum.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE){
+                    calculateAge();
+                    return true;
+                }
+                return false;
+            }
+        });
 
 
     }
     public int findAge(int sMonth, int sDay, int sYear){
         int age = sYear - getUYear();
+
         if (monthGreater(sMonth)) return age - 1;
+
         if (dayGreater(sDay)) return age - 1;
+
 
         return age;
     }
@@ -117,5 +134,30 @@ public class MainActivity extends AppCompatActivity {
 
     public int getUYear() {
         return uYear;
+    }
+
+    public void calculateAge() {
+        int age;
+
+        setUMonth();
+
+        setUDay();
+
+        setUYear();
+
+        Calendar cal = Calendar.getInstance();
+
+        SimpleDateFormat month = new SimpleDateFormat("MM");
+        final int sysMonth = Integer.parseInt(month.format(cal.getTime()));
+
+        SimpleDateFormat day = new SimpleDateFormat("dd");
+        final int sysDay = Integer.parseInt(day.format(cal.getTime()));
+
+        SimpleDateFormat year = new SimpleDateFormat("YYYY");
+        final int sysYear = Integer.parseInt(year.format(cal.getTime()));
+
+        age = findAge(sysMonth,sysDay,sysYear);
+
+        yearOld.setText(String.valueOf(age) + " Years Old");
     }
 }

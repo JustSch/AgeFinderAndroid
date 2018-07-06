@@ -77,7 +77,8 @@
         android:layout_alignRight="@+id/mText"
         android:layout_alignEnd="@+id/mText"
         android:layout_alignLeft="@+id/bornText"
-        android:layout_alignStart="@+id/bornText" />
+        android:layout_alignStart="@+id/bornText"
+        android:imeOptions="actionDone"/>
 
     <EditText
         android:id="@+id/dNum"
@@ -89,7 +90,8 @@
         android:ems="10"
         android:inputType="number"
         android:layout_alignRight="@+id/dText"
-        android:layout_alignEnd="@+id/dText" />
+        android:layout_alignEnd="@+id/dText"
+        android:imeOptions="actionDone"/>
 
     <EditText
         android:id="@+id/yNum"
@@ -102,7 +104,8 @@
         android:layout_marginStart="26dp"
         android:layout_toRightOf="@+id/dNum"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="number"
+        android:imeOptions="actionDone"/>
 
     <Button
         android:id="@+id/calButton"
