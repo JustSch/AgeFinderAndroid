@@ -40,17 +40,26 @@
         android:id="@+id/mText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bornText"
+        android:layout_alignStart="@+id/bornText"
+        android:layout_below="@+id/bornText"
         android:layout_centerVertical="true"
+        android:layout_marginTop="40dp"
         android:layout_toStartOf="@+id/yourAgeText"
         android:text="@string/mm"
+        android:textAlignment="viewStart"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/dText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/mText"
+        android:layout_alignLeft="@+id/yearOldText"
+        android:layout_alignStart="@+id/yearOldText"
+        android:layout_below="@+id/bornText"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="40dp"
         android:text="@string/dd"
         android:textSize="18sp" />
 
@@ -58,54 +67,56 @@
         android:id="@+id/yText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/yNum"
+        android:layout_below="@+id/bornText"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="40dp"
         android:text="@string/yyyy"
         android:textSize="18sp"
-        android:layout_alignBaseline="@+id/dText"
-        android:layout_alignBottom="@+id/dText"
-        android:layout_toRightOf="@+id/yourAgeText"
-        android:layout_toEndOf="@+id/yourAgeText"
         tools:ignore="RelativeOverlap" />
 
     <EditText
         android:id="@+id/mNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
-        android:ems="10"
-        android:inputType="number"
-        android:layout_below="@+id/mText"
-        android:layout_alignRight="@+id/mText"
         android:layout_alignEnd="@+id/mText"
         android:layout_alignLeft="@+id/bornText"
+        android:layout_alignRight="@+id/mText"
         android:layout_alignStart="@+id/bornText"
-        android:imeOptions="actionDone"/>
+        android:layout_below="@+id/mText"
+        android:ems="10"
+        android:imeOptions="actionDone"
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/dNum"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/mNum"
-        android:layout_alignLeft="@+id/yearOldText"
-        android:layout_alignStart="@+id/yearOldText"
-        android:ems="10"
-        android:inputType="number"
-        android:layout_alignRight="@+id/dText"
         android:layout_alignEnd="@+id/dText"
-        android:imeOptions="actionDone"/>
+        android:layout_alignLeft="@+id/yearOldText"
+        android:layout_alignRight="@+id/dText"
+        android:layout_alignStart="@+id/yearOldText"
+        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="-47dp"
+        android:layout_marginRight="-47dp"
+        android:ems="10"
+        android:imeOptions="actionDone"
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/yNum"
-        android:layout_width="wrap_content"
+        android:layout_width="103dp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/bornText"
         android:layout_alignRight="@+id/bornText"
         android:layout_alignTop="@+id/dNum"
-        android:layout_marginLeft="26dp"
-        android:layout_marginStart="26dp"
+
+        android:layout_marginLeft="93dp"
         android:layout_toRightOf="@+id/dNum"
         android:ems="10"
-        android:inputType="number"
-        android:imeOptions="actionDone"/>
+        android:imeOptions="actionDone"
+        android:inputType="number" />
 
     <Button
         android:id="@+id/calButton"
