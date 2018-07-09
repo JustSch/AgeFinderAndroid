@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AgeFinder</string>
+    <string name="app_name">AgeCalculator</string>
     <string name="yyyy">YYYY</string>
     <string name="_0_years_old">0 Years Old</string>
     <string name="dd">DD</string>
